@@ -13,5 +13,6 @@ class SplashActivity : AppCompatActivity() {
             startActivity(Intent(this, BluetoothConnectActivity::class.java))
             finish()
         }, 1000)
+
     }
 }
