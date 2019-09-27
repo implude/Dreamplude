@@ -1,8 +1,8 @@
-package com.implude.dreamplude
-
-import androidx.appcompat.app.AppCompatActivity
+package com.implude.dreamplude.activities
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.implude.dreamplude.R
 
 class MainActivity : AppCompatActivity() {
 
