@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+
+    <stroke
+        android:color="#000000"
+        android:dashWidth="20px"
+        android:dashGap="20px"
+        android:width="1dp"/>
+
+    <!-- fill/color -->
+    <solid
+        android:color="#00ffffff"/>
+
+    <!-- Control the width and height of the shape -->
+    <size
+        android:width="170dp"
+        android:height="170dp"/>
+
+    <!-- Control the radius of each corners -->
+    <corners
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"/>
+
+</shape>
