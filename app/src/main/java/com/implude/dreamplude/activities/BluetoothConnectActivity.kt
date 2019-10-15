@@ -9,6 +9,7 @@ import com.implude.dreamplude.databinding.ActivityBlutoothConnectBinding
 
 class BluetoothConnectActivity : AppCompatActivity() {
     private val recyclerViewAdapter by lazy { BluetoothRecyclerViewAdapter() }
+    private val bluetoothRequest = BluetoothRequest(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,5 +21,15 @@ class BluetoothConnectActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = recyclerViewAdapter
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bluetoothRequest.registerReceiver()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        bluetoothRequest.unregisterReceiver()
     }
 }
