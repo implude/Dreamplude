@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.implude.dreamplude.R
 import com.implude.dreamplude.databinding.ActivityBlutoothConnectBinding
+import kotlinx.android.synthetic.main.activity_blutooth_connect.*
 
 class BluetoothConnectActivity : AppCompatActivity() {
     private val recyclerViewAdapter by lazy { BluetoothRecyclerViewAdapter() }
@@ -14,7 +15,9 @@ class BluetoothConnectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_blutooth_connect)
-        val binding = DataBindingUtil.setContentView<ActivityBlutoothConnectBinding>(this, R.layout.activity_blutooth_connect)
+        val binding = DataBindingUtil.setContentView<ActivityBlutoothConnectBinding>(this, R.layout.activity_blutooth_connect).apply {
+            activity = this@BluetoothConnectActivity
+        }
 
         binding.deviceRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@BluetoothConnectActivity)
@@ -31,5 +34,9 @@ class BluetoothConnectActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         bluetoothRequest.unregisterReceiver()
+    }
+
+    fun onRefresh() {
+        swipeRefreshLayout.isRefreshing = false
     }
 }
