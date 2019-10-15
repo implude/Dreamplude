@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.implude.dreamplude.BluetoothRecyclerViewAdapter
+import com.implude.dreamplude.BluetoothRequest
 import com.implude.dreamplude.R
 import com.implude.dreamplude.databinding.ActivityBlutoothConnectBinding
 import kotlinx.android.synthetic.main.activity_blutooth_connect.*

@@ -1,10 +1,9 @@
-package com.implude.dreamplude.activities
+package com.implude.dreamplude
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.implude.dreamplude.R
 import com.implude.dreamplude.databinding.BluetoothDeviceItemBinding
 
 class BluetoothRecyclerViewAdapter : RecyclerView.Adapter<BluetoothRecyclerViewAdapter.DeviceViewHolder>() {

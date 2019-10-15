@@ -1,4 +1,4 @@
-package com.implude.dreamplude.activities
+package com.implude.dreamplude
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothAdapter.*
