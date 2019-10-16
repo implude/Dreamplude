@@ -5,8 +5,8 @@ import android.bluetooth.BluetoothDevice
 import android.content.Context
 import android.content.IntentFilter
 
-class BluetoothRequest(private val context: Context) {
-    private val bluetoothStateReceiver = BluetoothStateReceiver()
+class BluetoothRequest(private val context: Context, viewModel: BluetoothStateViewModel) {
+    private val bluetoothStateReceiver = BluetoothStateReceiver(viewModel)
 
     fun registerReceiver() = IntentFilter().run {
         addAction(BluetoothAdapter.ACTION_STATE_CHANGED)
@@ -22,4 +22,9 @@ class BluetoothRequest(private val context: Context) {
     }
 
     fun unregisterReceiver() = context.unregisterReceiver(bluetoothStateReceiver)
+
+    fun startDiscovery() {
+        val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        bluetoothAdapter.startDiscovery()
+    }
 }

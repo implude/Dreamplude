@@ -3,22 +3,26 @@ package com.implude.dreamplude.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.implude.dreamplude.BluetoothRecyclerViewAdapter
 import com.implude.dreamplude.BluetoothRequest
+import com.implude.dreamplude.BluetoothStateViewModel
 import com.implude.dreamplude.R
 import com.implude.dreamplude.databinding.ActivityBlutoothConnectBinding
 import kotlinx.android.synthetic.main.activity_blutooth_connect.*
 
 class BluetoothConnectActivity : AppCompatActivity() {
     private val recyclerViewAdapter by lazy { BluetoothRecyclerViewAdapter() }
-    private val bluetoothRequest = BluetoothRequest(this)
+    private val viewModel by lazy { ViewModelProviders.of(this)[BluetoothStateViewModel::class.java] }
+    private val bluetoothRequest by lazy { BluetoothRequest(this, viewModel) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_blutooth_connect)
         val binding = DataBindingUtil.setContentView<ActivityBlutoothConnectBinding>(this, R.layout.activity_blutooth_connect).apply {
             activity = this@BluetoothConnectActivity
+            vm = viewModel
         }
 
         binding.deviceRecyclerView.apply {
@@ -40,5 +44,6 @@ class BluetoothConnectActivity : AppCompatActivity() {
 
     fun onRefresh() {
         swipeRefreshLayout.isRefreshing = false
+        bluetoothRequest.startDiscovery()
     }
 }
