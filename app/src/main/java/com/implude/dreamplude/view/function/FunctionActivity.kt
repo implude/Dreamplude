@@ -1,13 +1,13 @@
-package com.implude.dreamplude.activities
+package com.implude.dreamplude.view.function
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.implude.dreamplude.R
 
-class MainActivity : AppCompatActivity() {
+class FunctionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_function)
     }
 }

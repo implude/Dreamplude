@@ -1,9 +1,10 @@
-package com.implude.dreamplude
+package com.implude.dreamplude.view.bluetooth.utils
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.content.Context
 import android.content.IntentFilter
+import com.implude.dreamplude.view.bluetooth.models.BluetoothStateViewModel
 
 class BluetoothRequest(private val context: Context, viewModel: BluetoothStateViewModel) {
     private val bluetoothStateReceiver = BluetoothStateReceiver(viewModel)

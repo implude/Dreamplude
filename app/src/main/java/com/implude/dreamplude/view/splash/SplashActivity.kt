@@ -1,9 +1,10 @@
-package com.implude.dreamplude.activities
+package com.implude.dreamplude.view.splash
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.implude.dreamplude.view.bluetooth.BluetoothConnectActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

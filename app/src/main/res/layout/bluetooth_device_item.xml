@@ -9,7 +9,7 @@
 
         <variable
             name="deviceItem"
-            type="com.implude.dreamplude.BluetoothDeviceItem" />
+            type="com.implude.dreamplude.view.bluetooth.models.BluetoothDeviceItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

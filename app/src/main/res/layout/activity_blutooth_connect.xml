@@ -11,11 +11,11 @@
 
         <variable
             name="vm"
-            type="com.implude.dreamplude.BluetoothStateViewModel" />
+            type="com.implude.dreamplude.view.bluetooth.models.BluetoothStateViewModel" />
 
         <variable
             name="activity"
-            type="com.implude.dreamplude.activities.BluetoothConnectActivity" />
+            type="com.implude.dreamplude.view.bluetooth.BluetoothConnectActivity" />
     </data>
 
     <LinearLayout

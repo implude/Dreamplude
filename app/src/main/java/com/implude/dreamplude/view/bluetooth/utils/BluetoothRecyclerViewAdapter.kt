@@ -1,10 +1,12 @@
-package com.implude.dreamplude
+package com.implude.dreamplude.view.bluetooth.utils
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.implude.dreamplude.R
 import com.implude.dreamplude.databinding.BluetoothDeviceItemBinding
+import com.implude.dreamplude.view.bluetooth.models.BluetoothDeviceItem
 
 class BluetoothRecyclerViewAdapter : RecyclerView.Adapter<BluetoothRecyclerViewAdapter.DeviceViewHolder>() {
     var devices = ArrayList<BluetoothDeviceItem>()

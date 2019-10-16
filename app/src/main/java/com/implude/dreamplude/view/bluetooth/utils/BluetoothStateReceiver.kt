@@ -1,4 +1,4 @@
-package com.implude.dreamplude
+package com.implude.dreamplude.view.bluetooth.utils
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothAdapter.*
@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.implude.dreamplude.view.bluetooth.models.BluetoothStateViewModel
 
 private const val TAG = "testing"
 

@@ -1,15 +1,15 @@
-package com.implude.dreamplude.activities
+package com.implude.dreamplude.view.bluetooth
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.implude.dreamplude.BluetoothRecyclerViewAdapter
-import com.implude.dreamplude.BluetoothRequest
-import com.implude.dreamplude.BluetoothStateViewModel
 import com.implude.dreamplude.R
 import com.implude.dreamplude.databinding.ActivityBlutoothConnectBinding
+import com.implude.dreamplude.view.bluetooth.models.BluetoothStateViewModel
+import com.implude.dreamplude.view.bluetooth.utils.BluetoothRecyclerViewAdapter
+import com.implude.dreamplude.view.bluetooth.utils.BluetoothRequest
 import kotlinx.android.synthetic.main.activity_blutooth_connect.*
 
 class BluetoothConnectActivity : AppCompatActivity() {
