@@ -11,14 +11,9 @@ class BluetoothRequest(private val context: Context, viewModel: BluetoothStateVi
 
     fun registerReceiver() = IntentFilter().run {
         addAction(BluetoothAdapter.ACTION_STATE_CHANGED)
-        addAction(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED)
-        addAction(BluetoothDevice.ACTION_ACL_CONNECTED)
-        addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED)
-        addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED)
-        addAction(BluetoothDevice.ACTION_FOUND)
         addAction(BluetoothAdapter.ACTION_DISCOVERY_STARTED)
+        addAction(BluetoothDevice.ACTION_FOUND)
         addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)
-        addAction(BluetoothDevice.ACTION_PAIRING_REQUEST)
         context.registerReceiver(bluetoothStateReceiver, this)
     }
 
