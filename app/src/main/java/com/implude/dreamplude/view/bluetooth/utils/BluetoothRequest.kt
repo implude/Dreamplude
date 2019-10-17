@@ -6,8 +6,11 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.implude.dreamplude.R
 import com.implude.dreamplude.view.bluetooth.models.BluetoothStateViewModel
 
 class BluetoothRequest(private val context: Activity, viewModel: BluetoothStateViewModel) {
@@ -30,6 +33,12 @@ class BluetoothRequest(private val context: Activity, viewModel: BluetoothStateV
 
     fun startDiscovery() {
         val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-        bluetoothAdapter.startDiscovery()
+        when {
+            bluetoothAdapter == null -> showLongToast(R.string.bluetooth_not_supported)
+            !bluetoothAdapter.isEnabled -> showLongToast(R.string.bluetooth_not_enabled)
+            else -> bluetoothAdapter.startDiscovery()
+        }
     }
+
+    private fun showLongToast(@StringRes id: Int) = Toast.makeText(context, id, Toast.LENGTH_LONG).show()
 }
