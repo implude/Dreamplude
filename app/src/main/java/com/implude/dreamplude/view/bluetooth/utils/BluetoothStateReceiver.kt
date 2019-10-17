@@ -1,11 +1,13 @@
 package com.implude.dreamplude.view.bluetooth.utils
 
 import android.bluetooth.BluetoothAdapter.*
+import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothDevice.ACTION_FOUND
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.implude.dreamplude.view.bluetooth.models.BluetoothDeviceItem
 import com.implude.dreamplude.view.bluetooth.models.BluetoothStateViewModel
 
 private const val TAG = "testing"
@@ -20,8 +22,12 @@ class BluetoothStateReceiver(private val viewModel: BluetoothStateViewModel) : B
                 }
             }
             ACTION_DISCOVERY_STARTED -> viewModel.isDiscovering.set(true)
-            ACTION_FOUND -> Log.d(TAG, "ACTION_FOUND")
+            ACTION_FOUND -> {
+                val device = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE) ?: return
+                viewModel.deviceList.add(BluetoothDeviceItem(device.name, ""))
+            }
             ACTION_DISCOVERY_FINISHED -> viewModel.isDiscovering.set(false)
         }
+        Log.d(TAG, intent.action.toString())
     }
 }
