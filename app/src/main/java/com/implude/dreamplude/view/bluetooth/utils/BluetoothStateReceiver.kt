@@ -24,7 +24,7 @@ class BluetoothStateReceiver(private val viewModel: BluetoothStateViewModel) : B
             ACTION_DISCOVERY_STARTED -> viewModel.isDiscovering.set(true)
             ACTION_FOUND -> {
                 val device = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE) ?: return
-                viewModel.deviceList.add(BluetoothDeviceItem(device.name, ""))
+                device.name?.let { viewModel.deviceList.add(BluetoothDeviceItem(it, "")) }
             }
             ACTION_DISCOVERY_FINISHED -> viewModel.isDiscovering.set(false)
         }
