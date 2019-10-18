@@ -2,6 +2,7 @@ package com.implude.dreamplude.view.function
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.implude.dreamplude.R
 import com.implude.dreamplude.view.bluetooth.models.FunctionItem
+import com.implude.dreamplude.view.functiondetail.FunctionDetailActivity
 
 
 class FunctionRecyclerViewAdapter(private val context: Context, val items: ArrayList<FunctionItem>) : RecyclerView.Adapter<FunctionRecyclerViewAdapter.ViewHolder>() {
@@ -26,6 +28,8 @@ class FunctionRecyclerViewAdapter(private val context: Context, val items: Array
         holder.title.text = item.title
         holder.image.setImageResource(item.image)
         holder.root.setOnClickListener {
+            val intent = Intent(context, FunctionDetailActivity::class.java).putExtra("position", position)
+            context.startActivity(intent)
         }
     }
 
