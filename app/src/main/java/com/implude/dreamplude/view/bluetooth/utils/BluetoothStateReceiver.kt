@@ -13,7 +13,10 @@ import com.implude.dreamplude.view.bluetooth.models.BluetoothStateViewModel
 class BluetoothStateReceiver(private val viewModel: BluetoothStateViewModel) : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
-            ACTION_DISCOVERY_STARTED -> viewModel.isDiscovering.set(true)
+            ACTION_DISCOVERY_STARTED -> {
+                viewModel.deviceList.clear()
+                viewModel.isDiscovering.set(true)
+            }
             ACTION_FOUND -> {
                 val device = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE) ?: return
                 device.name?.let { viewModel.deviceList.add(BluetoothDeviceItem(it, "")) }
