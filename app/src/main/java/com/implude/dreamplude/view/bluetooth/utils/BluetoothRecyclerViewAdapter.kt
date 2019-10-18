@@ -8,7 +8,7 @@ import com.implude.dreamplude.R
 import com.implude.dreamplude.databinding.BluetoothDeviceItemBinding
 import com.implude.dreamplude.view.bluetooth.models.BluetoothDeviceItem
 
-class BluetoothRecyclerViewAdapter : RecyclerView.Adapter<BluetoothRecyclerViewAdapter.DeviceViewHolder>() {
+class BluetoothRecyclerViewAdapter(private val mBluetoothRequest: BluetoothRequest) : RecyclerView.Adapter<BluetoothRecyclerViewAdapter.DeviceViewHolder>() {
     var devices = ArrayList<BluetoothDeviceItem>()
         set(value) {
             field = value
@@ -23,7 +23,11 @@ class BluetoothRecyclerViewAdapter : RecyclerView.Adapter<BluetoothRecyclerViewA
     }
 
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
-        holder.deviceItemBinding.deviceItem = devices[position]
+        holder.deviceItemBinding.apply {
+            this.position = position
+            deviceItem = devices[position]
+            bluetoothRequest = mBluetoothRequest
+        }
     }
 
     override fun getItemCount(): Int {

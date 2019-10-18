@@ -32,7 +32,7 @@ class BluetoothConnectActivity : AppCompatActivity() {
         binding.deviceRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@BluetoothConnectActivity)
             setHasFixedSize(true)
-            adapter = BluetoothRecyclerViewAdapter()
+            adapter = BluetoothRecyclerViewAdapter(bluetoothRequest)
         }
     }
 
