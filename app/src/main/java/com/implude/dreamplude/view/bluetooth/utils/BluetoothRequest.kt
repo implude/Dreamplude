@@ -48,11 +48,12 @@ class BluetoothRequest(private val context: Activity, private val viewModel: Blu
     }
 
     fun connectDevice(positionInDeviceList: Int) {
-        //맥 주소를 받아왔을 때
         val macAddress = viewModel.deviceList[positionInDeviceList].bluetoothDevice.address
         val socket: BluetoothSocket
         try {
             val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+            bluetoothAdapter.cancelDiscovery()
+
             val bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress)
             val paramTypes = arrayOf<Class<*>>(Integer.TYPE)
             val tmpSocket = bluetoothDevice.createRfcommSocketToServiceRecord(bluetoothUUID)
