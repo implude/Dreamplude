@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.implude.dreamplude.R
 import com.implude.dreamplude.view.bluetooth.models.FunctionItem
-import com.implude.dreamplude.view.bluetooth.utils.FunctionRecyclerViewAdapter
 import com.implude.dreamplude.view.functiondetail.FunctionDetailActivity
 import kotlinx.android.synthetic.main.activity_function.*
 

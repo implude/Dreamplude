@@ -1,8 +1,7 @@
-package com.implude.dreamplude.view.bluetooth.utils
+package com.implude.dreamplude.view.function
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +22,6 @@ class FunctionRecyclerViewAdapter(private val context: Context, val items: Array
 
     override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val item = items[position]
-
-        val displayMetrics = DisplayMetrics()
 
         holder.title.text = item.title
         holder.image.setImageResource(item.image)
