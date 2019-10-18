@@ -1,24 +1,31 @@
 package com.implude.dreamplude.view.bluetooth.utils
 
+import android.Manifest
+import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
-import android.content.Context
 import android.content.IntentFilter
+import android.content.pm.PackageManager
+import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.implude.dreamplude.R
 import com.implude.dreamplude.view.bluetooth.models.BluetoothStateViewModel
 
-class BluetoothRequest(private val context: Context, viewModel: BluetoothStateViewModel) {
+class BluetoothRequest(private val context: Activity, viewModel: BluetoothStateViewModel) {
+    init {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(context, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), 1)
+        }
+    }
+
     private val bluetoothStateReceiver = BluetoothStateReceiver(viewModel)
 
     fun registerReceiver() = IntentFilter().run {
-        addAction(BluetoothAdapter.ACTION_STATE_CHANGED)
-        addAction(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED)
-        addAction(BluetoothDevice.ACTION_ACL_CONNECTED)
-        addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED)
-        addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED)
-        addAction(BluetoothDevice.ACTION_FOUND)
         addAction(BluetoothAdapter.ACTION_DISCOVERY_STARTED)
+        addAction(BluetoothDevice.ACTION_FOUND)
         addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)
-        addAction(BluetoothDevice.ACTION_PAIRING_REQUEST)
         context.registerReceiver(bluetoothStateReceiver, this)
     }
 
@@ -26,6 +33,12 @@ class BluetoothRequest(private val context: Context, viewModel: BluetoothStateVi
 
     fun startDiscovery() {
         val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-        bluetoothAdapter.startDiscovery()
+        when {
+            bluetoothAdapter == null -> showLongToast(R.string.bluetooth_not_supported)
+            !bluetoothAdapter.isEnabled -> showLongToast(R.string.bluetooth_not_enabled)
+            else -> bluetoothAdapter.startDiscovery()
+        }
     }
+
+    private fun showLongToast(@StringRes id: Int) = Toast.makeText(context, id, Toast.LENGTH_LONG).show()
 }
