@@ -15,10 +15,10 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.implude.dreamplude.R
 import com.implude.dreamplude.utils.BluetoothConnectedThread
 import com.implude.dreamplude.view.bluetooth.models.BluetoothStateViewModel
 import java.util.*
+
 
 class BluetoothRequest(private val context: Activity, private val viewModel: BluetoothStateViewModel) {
     init {
@@ -41,8 +41,8 @@ class BluetoothRequest(private val context: Activity, private val viewModel: Blu
     fun startDiscovery() {
         val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
         when {
-            bluetoothAdapter == null -> showLongToast(R.string.bluetooth_not_supported)
-            !bluetoothAdapter.isEnabled -> showLongToast(R.string.bluetooth_not_enabled)
+            bluetoothAdapter == null -> showLongToast(com.implude.dreamplude.R.string.bluetooth_not_supported)
+            !bluetoothAdapter.isEnabled -> showLongToast(com.implude.dreamplude.R.string.bluetooth_not_enabled)
             else -> bluetoothAdapter.startDiscovery()
         }
     }
@@ -54,8 +54,12 @@ class BluetoothRequest(private val context: Activity, private val viewModel: Blu
         try {
             val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
             val bluetoothDevice = bluetoothAdapter.getRemoteDevice(macAddress)
+            val paramTypes = arrayOf<Class<*>>(Integer.TYPE)
+            val tmpSocket = bluetoothDevice.createRfcommSocketToServiceRecord(bluetoothUUID)
+            val bluetoothClass = tmpSocket.remoteDevice.javaClass
+            val method = bluetoothClass.getMethod("createRfcommSocket", paramTypes[0])
 
-            socket = bluetoothDevice.createRfcommSocketToServiceRecord(bluetoothUUID)
+            socket = method.invoke(tmpSocket.remoteDevice, 1) as BluetoothSocket
             socket.connect()
 
             val handler = object : Handler(Looper.getMainLooper()) {
@@ -69,7 +73,7 @@ class BluetoothRequest(private val context: Activity, private val viewModel: Blu
             BluetoothConnectedThread(socket, handler).start()
         } catch (e: Exception) {
             e.printStackTrace()
-            Toast.makeText(context, R.string.error_occurred, Toast.LENGTH_LONG).show()
+            Toast.makeText(context, com.implude.dreamplude.R.string.error_occurred, Toast.LENGTH_LONG).show()
         }
     }
 
