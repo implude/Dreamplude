@@ -5,17 +5,21 @@
 
     <data>
 
-        <import type="android.bluetooth.BluetoothAdapter" />
-
         <import type="android.view.View" />
 
+        <import type="com.implude.dreamplude.view.bluetooth.models.BluetoothDeviceItem" />
+
         <variable
-            name="vm"
-            type="com.implude.dreamplude.view.bluetooth.models.BluetoothStateViewModel" />
+            name="isDiscovering"
+            type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
 
         <variable
             name="activity"
             type="com.implude.dreamplude.view.bluetooth.BluetoothConnectActivity" />
+
+        <variable
+            name="deviceList"
+            type="androidx.databinding.ObservableArrayList&lt;BluetoothDeviceItem&gt;" />
     </data>
 
     <LinearLayout
@@ -87,7 +91,7 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="12dp"
-                    android:visibility="@{vm.isDiscovering ? View.VISIBLE : View.GONE}"
+                    android:visibility="@{isDiscovering ? View.VISIBLE : View.GONE}"
                     app:layout_constraintBottom_toTopOf="@id/swipeRefreshLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -102,6 +106,7 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/deviceRecyclerView"
+                        item="@{deviceList}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         tools:listitem="@layout/bluetooth_device_item" />
