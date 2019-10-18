@@ -10,4 +10,7 @@
     <string name="bluetooth_not_supported">블루투스를 지원하지 않는 기기입니다.</string>
     <string name="bluetooth_not_enabled">블루투스를 켠 후 다시 시도해주세요.</string>
 
+    <string name="enter_mac_address">블루투스 기기의 맥 주소를 입력해주세요.</string>
+    <string name="ok">확인</string>
+    <string name="error_occurred">오류가 발생했습니다 다시 시도해주세요.</string>
 </resources>
