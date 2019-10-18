@@ -40,5 +40,9 @@ class BluetoothRequest(private val context: Activity, viewModel: BluetoothStateV
         }
     }
 
+    fun connectDevice(positionInDeviceList: Int) {
+
+    }
+
     private fun showLongToast(@StringRes id: Int) = Toast.makeText(context, id, Toast.LENGTH_LONG).show()
 }

@@ -10,11 +10,21 @@
         <variable
             name="deviceItem"
             type="com.implude.dreamplude.view.bluetooth.models.BluetoothDeviceItem" />
+
+        <variable
+            name="bluetoothRequest"
+            type="com.implude.dreamplude.view.bluetooth.utils.BluetoothRequest" />
+
+        <variable
+            name="position"
+            type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> bluetoothRequest.connectDevice(position)}"
         android:padding="12dp">
 
         <ImageView
