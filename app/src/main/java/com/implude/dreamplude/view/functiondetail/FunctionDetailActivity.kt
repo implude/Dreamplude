@@ -1,7 +1,8 @@
 package com.implude.dreamplude.view.functiondetail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.implude.dreamplude.R
 
 class FunctionDetailActivity : AppCompatActivity() {
 

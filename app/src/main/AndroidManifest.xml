@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-
+        <activity android:name=".view.functiondetail.FunctionDetailActivity"></activity>
         <activity
             android:name=".view.splash.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -27,7 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".view.function.FunctionActivity" />
         <activity android:name=".view.bluetooth.BluetoothConnectActivity" />
     </application>

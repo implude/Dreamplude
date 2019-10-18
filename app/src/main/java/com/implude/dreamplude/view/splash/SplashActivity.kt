@@ -12,8 +12,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             startActivity(Intent(this, BluetoothConnectActivity::class.java))
-            finish()
-        }, 1000)
+            finish() }, 1000)
 
     }
 }
